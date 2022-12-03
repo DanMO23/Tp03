@@ -9,16 +9,19 @@
 int main(){
     Tlista lista;
     int i;
-    for (i = 0; i< N-1; i++){
+    for (i = 0; i< N; i++){
         scanf("%s",lista.palavra[i].string_aloc);
         lista.palavra[i].linha = i;
     }
     printf("============\n");
-    selecao(lista, N-1);
-    for (i = 0; i< N-1; i++){
+    selecao(lista, N);
+    insercao(lista, N);
+    /*
+    for (i = 0; i< N; i++){
         printf("%s\n",lista.palavra[i].string_aloc);
         lista.palavra[i].linha = i;
     }
+    */
     return 0;
 }
 
@@ -32,6 +35,7 @@ coxinha
 pao
 caximbo
 carambola
+dorgas
 */
 
 

@@ -1,1 +1,3 @@
 *.exe
+teste_heap.c
+teste_quick.c

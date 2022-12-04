@@ -22,5 +22,8 @@ typedef struct
 
 int selecao(Tlista lista, int tam);
 int insercao(Tlista lista, int tam);
-int quicksort(Tlista lista, int tam);
 int heapsort(Tlista lista, int tam);
+void Ordena(int Esq, int Dir, Tlista *A);
+int QuickSort(Tlista A, int n);
+void Quick(Tlista *lista, int tam);
+void Particao(int Esq, int Dir, int *i, int *j, Tlista *A);

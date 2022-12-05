@@ -30,16 +30,3 @@ int main(){
     printf("=-=-=-=-=-=-=-=-=-=\n");
     return 0;
 }
-
-/*
-abacate
-pera
-flor
-jiboia
-ameba
-coxinha
-pao
-caximbo
-caramba
-dorgas
-*/

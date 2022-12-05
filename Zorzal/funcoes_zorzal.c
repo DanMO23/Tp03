@@ -39,6 +39,7 @@ int selecao(Tlista lista, int tam){
     return 0;
 
 }
+
 int insercao(Tlista lista, int tam){
   
     int i, j,k;
@@ -56,7 +57,7 @@ int insercao(Tlista lista, int tam){
 
     //Parte que printa resultado da ordenacao na tela:
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por insercao \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    for (k = 0; k< tam-1; k++){
+    for (k = 0; k< tam; k++){
         printf("%s\n",lista.palavra[k].string_aloc);
     }
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
@@ -77,13 +78,13 @@ void Particao(int Esq, int Dir, int *i, int *j, Tlista *A){
     } while (*i <= *j);
 }
 
-
 void Ordena(int Esq, int Dir, Tlista *A){
     int i,j;
     Particao(Esq, Dir, &i, &j, A);
     if (Esq < j) Ordena(Esq, j, A);
     if (i < Dir) Ordena(i, Dir, A);
 }
+
 void Quick(Tlista* A, int n){
     Ordena(0, n-1, A);
 }
@@ -101,56 +102,133 @@ int QuickSort(Tlista lista, int tam){
     return 0;
 }
 
+void Refaz(int Esq, int Dir, Tlista *lista){
+    int j = Esq * 2;
+    TADPalavra aux = lista->palavra[Esq];
+    while (j <= Dir){
+        if ((j < Dir)&&(strcmp(lista->palavra[j].string_aloc,lista->palavra[j+1].string_aloc) < 0)) j++;
+        if (strcmp(aux.string_aloc, lista->palavra[j].string_aloc) >= 0) break;
+        lista->palavra[Esq] = lista->palavra[j];
+        Esq = j; 
+        j = Esq * 2 ;
+        }
+    lista->palavra[Esq] = aux;
+}
 
-int heapsort(Tlista lista, int tam){
+void Constroi(Tlista *lista, int *n){
+    int Esq;
+    Esq = *n / 2 + 1;
+    while (Esq > 1){
+        Esq--;
+        Refaz(Esq, *n, lista);
+    }
+}
 
+void Heapsort(Tlista *lista, int *n){ 
+    int Esq, Dir;
+    TADPalavra aux;
+    Constroi(lista, n); //constroi o heap 
+    Esq = 1; Dir = *(n);
+    while (Dir > 1)
+    { //ordena o vetor 
+        aux = lista->palavra[1];
+        lista->palavra[1] = lista->palavra[Dir];
+        lista->palavra[Dir] = aux;
+        Dir--;
+        Refaz(Esq, Dir, lista);
+    }
+}
 
-    int k;
-
+int Chama_heapsort(Tlista lista_aux, int n){
+    Tlista lista;
+    int i= 0,k;
+    for (i = 1; i <= n; i++){
+        strcpy(lista.palavra[i].string_aloc, lista_aux.palavra[i-1].string_aloc);
+    }
+    Heapsort(&lista,&n);
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por heapsort \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    for (k = 0; k< tam; k++){
+    for (k = 1; k <= n; k++){
         printf("%s\n",lista.palavra[k].string_aloc);
     }
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;
 }
+
 /*
+3 
+4
+1
+3
+23
+54
+1
+23
+43
+5
+*/
+/*
+#include <stdio.h>
 
-void Constroi(Item *A, int *n)
+typedef struct a
 {
- int Esq;
- Esq = *n / 2 + 1;
- while (Esq > 1)
- {
- Esq--;
- Refaz(Esq, *n, A);
- }
+    int Chave;
+}Item;
+
+
+void Refaz(int Esq, int Dir, Item *A){
+    int j = Esq * 2;
+    Item aux = A[Esq];
+    while (j <= Dir){
+        if ((j < Dir)&&(A[j].Chave < A[j+1].Chave)) j++;
+        if (aux.Chave >= A[j].Chave) break;
+        A[Esq] = A[j];
+        Esq = j; 
+        j = Esq * 2 ;
+        }
+    A[Esq] = aux;
 }
 
-void Refaz(int Esq, int Dir, Item *A)
-{
- int j = Esq * 2;
- Item aux = A[Esq];
- while (j <= Dir){
- if ((j < Dir)&&(A[j].Chave < A[j+1].Chave)) j++;
- if (aux.Chave >= A[j].Chave) break;
- A[Esq] = A[j];
- Esq = j; j = Esq * 2 ;
- }
- A[Esq] = aux;
+void Constroi(Item *A, int *n){
+    int Esq;
+    Esq = *n / 2 + 1;
+    while (Esq > 0){
+        Esq--;
+        Refaz(Esq, *n, A);
+    }
 }
-/* -- Entra aqui a função Refaz -- 
-/* -- Entra aqui a função Constroi -- 
-void Heapsort(Item *A, Indice *n)
-{ Indice Esq, Dir;
+
+// -- Entra aqui a função Refaz -- 
+// -- Entra aqui a função Constroi -- 
+void Heapsort(Item *A, int *n)
+{ int Esq, Dir;
     Item aux;
-    Constroi(A, n); /* constroi o heap 
-    Esq = 1; Dir = *n;
-    while (Dir > 1)
-    { /* ordena o vetor 
-        aux = A[1]; A[1] = A[Dir]; A[Dir] = aux;
+    Constroi(A, n); //constroi o heap 
+    Esq = 0; Dir = *(n)-1;
+    while (Dir > 0)
+    { //ordena o vetor 
+        aux = A[0]; A[0] = A[Dir]; A[Dir] = aux;
         Dir--;
         Refaz(Esq, Dir, A);
     }
+}
+void Chama_heap(Item A, int n){
+
+
+    
+}
+
+int main(){
+    Item A[10];
+    int i,n;
+    for ( i = 0; i<10; i++){
+        scanf("%d", &A[i].Chave);
+    }
+    printf("======\n");
+    n = 10;
+    Heapsort(&A[0],&n);
+    for ( i = 0; i<10; i++){
+        printf("%d\n",A[i].Chave);
+    }
+    return 0;
 }
 */

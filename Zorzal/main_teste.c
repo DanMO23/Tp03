@@ -9,23 +9,25 @@
 int main(){
     Tlista lista;
     int i,k;
-    for (i = 0; i< N; i++){
+    int tam = 10;
+    for (i = 0; i< tam; i++){
         scanf("%s",lista.palavra[i].string_aloc);
         lista.palavra[i].linha = i;
     }
     //funcoes :
-    //selecao(lista, N);
-    //insercao(lista, N);
-    //QuickSort(lista,N);
+    selecao(lista, tam);
+    insercao(lista, tam);
+    QuickSort(lista, tam);
+    Chama_heapsort(lista,tam);
+    
     printf("=-=-=-=-=-=-=-=-=-=\n");
     printf("Lista normal \n");
     printf("=-=-=-=-=-=-=-=-=-=\n");
-
- 
-    for (i = 0; i< N; i++){
+    for (i = 0; i< tam; i++){
         printf("%s\n",lista.palavra[i].string_aloc);
         lista.palavra[i].linha = i;
     }
+    printf("=-=-=-=-=-=-=-=-=-=\n");
     return 0;
 }
 
@@ -38,6 +40,6 @@ ameba
 coxinha
 pao
 caximbo
-carambola
+caramba
 dorgas
 */

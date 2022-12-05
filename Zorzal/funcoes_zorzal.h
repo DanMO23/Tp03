@@ -5,10 +5,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#define N 10
+#define N 30
 //tad provisorios para teste
 typedef struct {
-  char string_aloc[10]; 
+  char string_aloc[20]; 
   int linha;  
 } TADPalavra;
 
@@ -22,8 +22,11 @@ typedef struct
 
 int selecao(Tlista lista, int tam);
 int insercao(Tlista lista, int tam);
-int heapsort(Tlista lista, int tam);
-void Ordena(int Esq, int Dir, Tlista *A);
-int QuickSort(Tlista A, int n);
-void Quick(Tlista *lista, int tam);
 void Particao(int Esq, int Dir, int *i, int *j, Tlista *A);
+void Ordena(int Esq, int Dir, Tlista *A);
+void Quick(Tlista* A, int n);
+int QuickSort(Tlista lista, int tam);
+void Refaz(int Esq, int Dir, Tlista *lista);
+void Constroi(Tlista *lista, int *n);
+void Heapsort(Tlista *lista, int *n);
+int Chama_heapsort(Tlista lista_aux, int n);

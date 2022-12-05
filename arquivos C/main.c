@@ -5,7 +5,7 @@ int main(){
     TDicionario Dicionario1;
     char nome_arquivo[400];
     char palavra_removida[80];
-    int operacao;
+    int operacao, tipo_da_ordenacao;
     int testa_arquivo;
     char letra_da_lista, lixo;
 
@@ -22,7 +22,7 @@ int main(){
         exit(1);
     }
 
-    printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Sair;\n");
+    printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Ordenar lista especifica;\n(8) = Ordenar dicionario todo;\n(9) = Sair;\n");
     scanf("%d", &operacao);
     do{    
         switch (operacao) {
@@ -54,15 +54,63 @@ int main(){
                 Tamanho_dicionario(&Dicionario1);
                 break;
             case 7:
+                printf("Digite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
+                scanf("\n%d", &tipo_da_ordenacao);
+                switch (tipo_da_ordenacao)
+                {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                default:
+                    printf("\nNumero de operacao invalido!!!");
+                    break;
+                }
+                break;
+            case 8:
+                printf("Digite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
+                scanf("\n%d", &tipo_da_ordenacao);
+                switch (tipo_da_ordenacao)
+                {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                default:
+                    printf("\nNumero de operacao invalido!!!");
+                    break;
+                }
+                break;
+            case 9:
                 exit(0);
             default:
                 printf("Numero invalido. Favor inserir um numero valido!!! \n");
                 break;
         }
-        printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Sair;\n");
+        printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Ordenar lista especifica;\n(8) = Ordenar dicionario todo;\n(9) = Sair;\n");
         operacao = 0;
         scanf("%c", &lixo);
         scanf("\n%d", &operacao);
-    }while(operacao!=7);
+    }while(operacao!=9);
     return 0;
 }

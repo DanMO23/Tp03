@@ -1,5 +1,7 @@
 #include <string.h>
 #include <stdio.h>
+#include <time.h>
+
 #define N 30
 //tad provisorios para teste
 typedef struct {

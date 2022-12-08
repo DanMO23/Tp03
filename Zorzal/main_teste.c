@@ -28,9 +28,9 @@ int main(){
         lista.palavra[i].linha = i;
     }
     //funcoes :
-    Selecao(lista, tam);
-    Insercao(lista, tam);
-    Quicksort(lista, tam);
+    //Selecao(lista, tam);
+    //Insercao(lista, tam);
+    //Quicksort(lista, tam);
     Heapsort(lista,tam);
     
     printf("=-=-=-=-=-=-=-=-=-=\n");

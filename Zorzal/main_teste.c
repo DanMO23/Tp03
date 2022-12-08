@@ -31,7 +31,7 @@ int main(){
     //Selecao(lista, tam);
     //Insercao(lista, tam);
     //Quicksort(lista, tam);
-    Heapsort(lista,tam);
+    //Heapsort(lista,tam);
     
     printf("=-=-=-=-=-=-=-=-=-=\n");
     printf("Lista normal \n");

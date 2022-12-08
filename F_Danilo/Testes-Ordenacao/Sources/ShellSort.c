@@ -1,4 +1,4 @@
-#include "../Files_h/ShellSort.h"
+#include "../Headers/ShellSort.h"
 
 void ShellSort(Tlista lista, int tam){
    clock_t t;

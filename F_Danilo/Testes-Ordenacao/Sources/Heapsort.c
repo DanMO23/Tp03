@@ -1,4 +1,4 @@
-#include "../Files_h/Heapsort.h"
+#include "../Headers/Heapsort.h"
 
 void Refaz(int Esq, int Dir, Tlista *lista){
     int j = Esq * 2;

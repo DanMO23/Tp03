@@ -1,5 +1,5 @@
-#include "Files_h/ShellSort.h"
-//gcc ./main_teste.c ./Files_h/Heapsort.h ./Files_c/Heapsort.c ./Files_c/Ordenacao_simples.c ./Files_c/Quicksort.c ./Files_h/Ordenacao_simples.h ./Files_h/Quicksort.h ./Files_c/BubbleSort.c ./Files_h/BubbleSort.h ./Files_c/ShellSort.c ./Files_h/ShellSort.h -o run_final
+#include "Headers/ShellSort.h"
+
 /*
 amostra
 pera
@@ -25,7 +25,6 @@ int main(){
     }
     //funcoes :
     
-    BubbleSort(lista, tam);
     printf("=-=-=-=-=-=-=-=-=-=\n");
     printf("Lista normal \n");
     printf("=-=-=-=-=-=-=-=-=-=\n");
@@ -35,14 +34,13 @@ int main(){
     }
     printf("=-=-=-=-=-=-=-=-=-=\n");
 
+    BubbleSort(lista, tam);
+    Insercao(lista, tam);
+    Selecao(lista,tam);
+
     ShellSort(lista, tam);
-    printf("=-=-=-=-=-=-=-=-=-=\n");
-    printf("Lista normal \n");
-    printf("=-=-=-=-=-=-=-=-=-=\n");
-    for (i = 0; i< tam; i++){
-        printf("%s\n",lista.palavra[i].string_aloc);
-        lista.palavra[i].linha = i;
-    }
-    printf("=-=-=-=-=-=-=-=-=-=\n");
+    Quicksort(lista,tam);
+    Heapsort(lista,tam);
+    
     return 0;
 }

@@ -11,3 +11,4 @@ Feito pra trazer os itens do tad dicionario da forma correta
 
 int Selecao(Tlista lista, int tam);
 int Insercao(Tlista lista, int tam);
+void BubbleSort(Tlista lista, int tam);

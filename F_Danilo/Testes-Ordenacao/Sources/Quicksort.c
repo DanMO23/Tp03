@@ -1,4 +1,4 @@
-#include "../Files_h/Quicksort.h"
+#include "../Headers/Quicksort.h"
 
 void Particao(int Esq, int Dir, int *i, int *j, Tlista *lista){
     TADPalavra pivo, aux;

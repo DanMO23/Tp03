@@ -54,52 +54,16 @@ int main(){
                 Tamanho_dicionario(&Dicionario1);
                 break;
             case 7:
-                printf("Digite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
+                printf("Digite a letra chave da lista que deseja ordenar:\n");
+                scanf("\n%c", &letra_da_lista);
+                printf("\nDigite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
                 scanf("\n%d", &tipo_da_ordenacao);
-                switch (tipo_da_ordenacao)
-                {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                default:
-                    printf("\nNumero de operacao invalido!!!");
-                    break;
-                }
+                //Ordena_lista_especifica(&Dicionario1, tipo_da_ordenacao,letra_da_lista);
                 break;
             case 8:
                 printf("Digite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
                 scanf("\n%d", &tipo_da_ordenacao);
-                switch (tipo_da_ordenacao)
-                {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                default:
-                    printf("\nNumero de operacao invalido!!!");
-                    break;
-                }
+                //Ordena_dicionario(&Dicionario1, tipo_da_operacao);
                 break;
             case 9:
                 exit(0);

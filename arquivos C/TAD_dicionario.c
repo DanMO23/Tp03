@@ -329,3 +329,105 @@ int Tamanho_dicionario(TDicionario* pDicionario){
     printf("O tamanho do dicionario = %d\n", tamanho);
     return 0;
 }
+
+//Ordena dicionario dada um tipo de ordenacao
+int Ordena_dicionario(TDicionario* pDicionario, int operacao){
+    Apontador_Celula_Dicionario pAux = pDicionario->pPrimeira_Lista->Prox_celula_lista;
+    /*
+    (1) = Ordenar por BubbleSort;
+    (2) = Ordenar por Selecao;
+    (3) = Ordenar por Insercao;
+    (4) = Ordenar por ShellSort;
+    (5) = Ordenar por QuickSort;
+    (6) = Ordenar por HeapSort;
+    (7) = Voltar ao menu principal;
+    */
+    while (pAux != NULL){
+        if (leh_vazia(pAux)){ 
+            printf("A lista da letra %c e vazia \n",pAux->letra_lista);
+            continue;
+        }
+        switch (operacao){
+            case 1:
+                //Ordena_bubble
+                break;
+            case 2:
+                Selecao(pAux->lista,numero_palavra(&pAux->lista));
+                break;
+            case 3:
+                Insercao(pAux->lista,numero_palavra(&pAux->lista));
+                break;
+            case 4:
+                //Ordena shellsort
+                break;
+            case 5:
+                Quicksort(pAux->lista,numero_palavra(&pAux->lista));
+                break;
+            case 6:
+                Heapsort(pAux->lista,numero_palavra(&pAux->lista));
+                break;
+            case 7:
+                return 0;
+                break;
+            default:
+                printf("\nNumero de operacao invalido!!!");
+                break;
+        }
+        pAux = pAux->Prox_celula_lista;
+    }
+    return 0;
+}
+
+//Ordena uma lista dada o tipo da ordenacao e a letra da lista a ser ordenada
+int Ordenada_lista_especifica(TDicionario *pDicionario, int operacao, char letra_da_lista){
+    Apontador_Celula_Dicionario pAux = pDicionario->pPrimeira_Lista->Prox_celula_lista;
+    if (Dicionario_e_vazio(pDicionario)) {
+        printf("Dicionario vazio\n");
+        return 1;
+    }
+    while (pAux != NULL){
+        if (pAux->letra_lista == letra_da_lista) break;
+        else pAux = pAux->Prox_celula_lista;
+    }
+    
+    if (leh_vazia(pAux)){ 
+        printf("A lista da letra %c e vazia \n",pAux->letra_lista);
+        return 1;
+    }
+    /*
+    (1) = Ordenar por BubbleSort;
+    (2) = Ordenar por Selecao;
+    (3) = Ordenar por Insercao;
+    (4) = Ordenar por ShellSort;
+    (5) = Ordenar por QuickSort;
+    (6) = Ordenar por HeapSort;
+    (7) = Voltar ao menu principal;
+    */
+    switch (operacao){
+        case 1:
+            //Ordena_bubble
+            break;
+        case 2:
+            Selecao(pAux->lista,numero_palavra(&pAux->lista));
+            break;
+        case 3:
+            Insercao(pAux->lista,numero_palavra(&pAux->lista));
+            break;
+        case 4:
+            //Ordena shellsort
+            break;
+        case 5:
+            Quicksort(pAux->lista,numero_palavra(&pAux->lista));
+            break;
+        case 6:
+            Heapsort(pAux->lista,numero_palavra(&pAux->lista));
+            break;
+        case 7:
+            return 0;
+            break;
+        default:
+            printf("\nNumero de operacao invalido!!!");
+            break;
+    }
+    return 0;
+}

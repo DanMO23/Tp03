@@ -34,7 +34,8 @@ int Selecao(Tlista lista, int tam){
         aux = lista.palavra[Min];
         lista.palavra[Min] = lista.palavra[i];
         lista.palavra[i] = aux;
-        conta_movimentacao++;
+       
+       
     }
     
     t = clock() - t;

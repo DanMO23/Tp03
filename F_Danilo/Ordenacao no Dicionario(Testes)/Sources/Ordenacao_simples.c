@@ -27,13 +27,13 @@ int Selecao(Tlista lista, int tam){
         Min = i;
         for (j = i + 1; j < tam; j++){
             conta_comparacao++;
-            if (strcmp(lista.palavra[j].string_aloc, lista.palavra[Min].string_aloc) < 0){
+            if (strcmp(lista.Lista[j].palavra.string_aloc, lista.Lista[Min].palavra.string_aloc) < 0){
             Min = j;
             } 
         }
-        aux = lista.palavra[Min];
-        lista.palavra[Min] = lista.palavra[i];
-        lista.palavra[i] = aux;
+        aux = lista.Lista[Min].palavra;
+        lista.Lista[Min].palavra = lista.Lista[i].palavra;
+        lista.Lista[i].palavra = aux;
        
        
     }
@@ -42,7 +42,7 @@ int Selecao(Tlista lista, int tam){
     //Parte que printa resultado da ordenacao na tela:
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por selecao \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (k = 0; k< tam; k++){
-        printf("%s\n",lista.palavra[k].string_aloc);
+        printf("%s\n",lista.Lista[k].palavra.string_aloc);
     }
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     printf("Numero de Movimentacoes: %d\n",conta_movimentacao);
@@ -62,16 +62,16 @@ int Insercao(Tlista lista, int tam){
     TADPalavra aux;
     
     for (i = 1; i < tam; i++){
-        aux = lista.palavra[i];
+        aux = lista.Lista[i].palavra;
         j = i - 1;
         conta_comparacao++;
-        while((j >= 0) && ((strcmp(aux.string_aloc,lista.palavra[j].string_aloc)) < 0 )){
-            lista.palavra[j + 1] = lista.palavra[j];
+        while((j >= 0) && ((strcmp(aux.string_aloc,lista.Lista[j].palavra.string_aloc)) < 0 )){
+            lista.Lista[j + 1].palavra = lista.Lista[j].palavra;
             j--;
             conta_comparacao++;
             conta_movimentacao++;
         }
-        lista.palavra[j+1] = aux;
+        lista.Lista[j+1].palavra = aux;
         conta_movimentacao++;
     }
     t = clock() - t;
@@ -79,7 +79,7 @@ int Insercao(Tlista lista, int tam){
     //Parte que printa resultado da ordenacao na tela:
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por insercao \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (k = 0; k< tam; k++){
-        printf("%s\n",lista.palavra[k].string_aloc);
+        printf("%s\n",lista.Lista[k].palavra.string_aloc);
     }
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     printf("Numero de Movimentacoes: %d\n",conta_movimentacao);
@@ -104,15 +104,15 @@ void BubbleSort(Tlista lista, int tam){
     while (trocou){
        trocou = 0;
         for (int i = 0; i < tam-1; i++){
-        aux1 = lista.palavra[i];   
-        aux2 = lista.palavra[i+1];  
+        aux1 = lista.Lista[i].palavra;   
+        aux2 = lista.Lista[i+1].palavra;  
         conta_comparacao++;
             if (strcmp(aux1.string_aloc, aux2.string_aloc) > 0){
                 /*Realiza a troca*/
                  conta_movimentacao++;
-                lista.palavra[i+1]= aux1;
+                lista.Lista[i+1].palavra= aux1;
                 conta_movimentacao++;
-               lista.palavra[i]= aux2;
+               lista.Lista[i].palavra= aux2;
                 trocou = 1; 
             }
         }
@@ -122,7 +122,7 @@ void BubbleSort(Tlista lista, int tam){
     printf("Sequencia reordenada por Bubble:\n");
     printf("=-=-=-=-=-=-=-=-=-=\n");
     for (int i = 0; i < tam; i++)
-        printf("%s \n", lista.palavra[i].string_aloc);
+        printf("%s \n", lista.Lista[i].palavra.string_aloc);
     printf("\n");
 
       printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");

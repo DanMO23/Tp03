@@ -3,12 +3,12 @@
 void Particao(int Esq, int Dir, int *i, int *j, Tlista *lista){
     TADPalavra pivo, aux;
     *i = Esq; *j = Dir;
-    pivo = lista->palavra[(*i + *j)/2]; // obtem o pivo x 
+    pivo = lista->Lista[(*i + *j)/2].palavra; // obtem o pivo x 
     do{
-        while (strcmp(pivo.string_aloc, lista->palavra[*i].string_aloc) > 0) (*i)++;
-        while (strcmp(pivo.string_aloc, lista->palavra[*j].string_aloc) < 0) (*j)--;
+        while (strcmp(pivo.string_aloc, lista->Lista[*i].palavra.string_aloc) > 0) (*i)++;
+        while (strcmp(pivo.string_aloc, lista->Lista[*j].palavra.string_aloc) < 0) (*j)--;
         if (*i <= *j){
-            aux = lista->palavra[*i]; lista->palavra[*i] = lista->palavra[*j]; lista->palavra[*j] = aux;
+            aux = lista->Lista[*i].palavra; lista->Lista[*i].palavra = lista->Lista[*j].palavra; lista->Lista[*j].palavra = aux;
             (*i)++; (*j)--;
         }
     } while (*i <= *j);
@@ -28,7 +28,7 @@ int Quicksort(Tlista lista, int n){
     
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por quicksort \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (k = 0; k< n; k++){
-        printf("%s\n",lista.palavra[k].string_aloc);
+        printf("%s\n",lista.Lista[k].palavra.string_aloc);
     }
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;

@@ -15,17 +15,17 @@ void ShellSort(Tlista lista, int tam){
         h = h/3;
         for( i = h ; i < tam ; i++ )
         {
-            aux = lista.palavra[i]; j = i;
-            while (strcmp(lista.palavra[j - h].string_aloc, aux.string_aloc) > 0)
+            aux = lista.Lista[i].palavra; j = i;
+            while (strcmp(lista.Lista[j - h].palavra.string_aloc, aux.string_aloc) > 0)
             {
 
                 conta_comparacao++;
-              lista.palavra[j] = lista.palavra[j - h]; 
+              lista.Lista[j].palavra = lista.Lista[j - h].palavra; 
                
               j -= h;
               if (j < h) break;
             }
-        lista.palavra[j] = aux;
+        lista.Lista[j].palavra = aux;
         conta_movimentacao++;
     }
     } while (h != 1);
@@ -34,7 +34,7 @@ void ShellSort(Tlista lista, int tam){
     //Parte que printa resultado da ordenacao na tela:
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por shellsort\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (i = 0; i< tam; i++){
-        printf("%s\n",lista.palavra[i].string_aloc);
+        printf("%s\n",lista.Lista[i].palavra.string_aloc);
     }
     
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");

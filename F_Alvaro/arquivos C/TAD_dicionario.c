@@ -227,7 +227,7 @@ int Encadeia_Celula_Dicionario(TDicionario* pDicionario, char *string, char letr
             }
         }
     }
-    printf("passei");
+    //printf("passei");
     return 0;
 }
 

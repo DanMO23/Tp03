@@ -11,13 +11,11 @@ int main(){
 
     printf("Escreva o path do arquivo (ex.: 'texto.txt'):\n");
     //scanf("%s", nome_arquivo);
-    strcpy(nome_arquivo, "texto.txt");
+    strcpy(nome_arquivo, "texto_aux.txt");
     printf("Nome/endereco do arquivo: %s \n",nome_arquivo);
 
     /*funcoes que iniciam e preenchem o dicionario*/
     Faz_Dicionario_Vazio(&Dicionario1);
-
-
     testa_arquivo = Constroi_Dicionario(&Dicionario1, nome_arquivo);
   
     if (testa_arquivo==1){
@@ -66,7 +64,7 @@ int main(){
             //     scanf("\n%d", &tipo_da_ordenacao);
             //     //Ordena_dicionario(&Dicionario1, tipo_da_operacao);
             //     break;
-            case 7:
+            case 9:
                 exit(0);
             default:
                 printf("Numero invalido. Favor inserir um numero valido!!! \n");

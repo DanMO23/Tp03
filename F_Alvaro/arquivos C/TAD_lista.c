@@ -23,10 +23,12 @@ int insere_palavra_linha(Tlista *lista, int linha, char *palavra)
         PalavraLinhaVazia(&lista->Lista[lista->ultimo].palavra.linha); // Novo espaço na memória para a linha
         InserelinhaPalavra(&lista->Lista[lista->ultimo].palavra, linha); 
         lista->ultimo++;
+        //printf("%d",lista->ultimo);
     }
     else{
         InserelinhaPalavra(&lista->Lista[lista->ultimo].palavra, linha); //Irá preencher novamente um novo espaço para mostrar a linha em que a palavra aparece
         lista->ultimo++;
+        //printf("%d",lista->ultimo);
     }
     return 1;
 }

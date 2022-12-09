@@ -32,6 +32,7 @@ void Ordena(int Esq, int Dir, Tlista *lista,int *conta_comparacao, int *conta_mo
     if (i < Dir) Ordena(i, Dir, lista,conta_comparacao,conta_movimentacao);
 }
 
+//Ordena ista via quicksort. 
 int Quicksort(Tlista lista, int n){
     clock_t t;
     t = clock();

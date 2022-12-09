@@ -1,21 +1,12 @@
 #include "../Headers/Ordenacao_simples.h"
 /*
-Feito pra trazer os itens do tad dicionario da forma correta
-*/
-/*
 Para realizar as comparacoes usa-se a funcao strcmp da biblioteca <string.h>. Se ela retornar:
 Um valor menor que zero: a primeira string é menor que a segunda
 Um valor maior que zero: a primeira string é maior que a segunda
 Retorna 0: as duas strings sao iguais
 */
 
-/*
-  clock_t t;
-  t = clock();
-  t = clock() - t;
-  printf("\nPara Entradas = %i\nTempo de execucao: %lfms\n",N, ((double)t)/((CLOCKS_PER_SEC/1000)));
-  */
-
+//Ordena lista pelo metodo selecao
 int Selecao(Tlista lista, int tam){
     
     clock_t t;
@@ -34,8 +25,6 @@ int Selecao(Tlista lista, int tam){
         aux = lista.Lista[Min].palavra;
         lista.Lista[Min].palavra = lista.Lista[i].palavra;
         lista.Lista[i].palavra = aux;
-       
-       
     }
     
     t = clock() - t;
@@ -51,10 +40,11 @@ int Selecao(Tlista lista, int tam){
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
     return 0;
-
 }
 
+//Ordena lista pelo metodo insercao
 int Insercao(Tlista lista, int tam){
+
     clock_t t;
     t = clock();
     int conta_movimentacao = 0, conta_comparacao = 0;
@@ -88,9 +78,6 @@ int Insercao(Tlista lista, int tam){
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;
 }
-
-
-
 
 void BubbleSort(Tlista lista, int tam){
     clock_t t;

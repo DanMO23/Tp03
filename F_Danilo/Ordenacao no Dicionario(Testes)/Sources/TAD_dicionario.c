@@ -1,7 +1,10 @@
 #include "../Headers/TAD_dicionario.h"
 
-/*O modelo de lista encadeada escolhido para o TAD_dicionario foi o com cabeca*/
+/*
+!O modelo de lista encadeada escolhido para o TAD_dicionario foi o com cabeca
+*/
 
+//inicia o dicionario vazio. Da exit 1 para erros de alocacao
 int Faz_Dicionario_Vazio(TDicionario* pDicionario){
     pDicionario->pPrimeira_Lista = (Apontador_Celula_Dicionario)malloc(sizeof(TCelulaDicionario));
 
@@ -16,6 +19,7 @@ int Faz_Dicionario_Vazio(TDicionario* pDicionario){
     return 0;
 }
 
+//Imprime as palavras de uma lista dada a letra chave da lista. Caso dicionario seja vazio ou uma dada lista e vazia, retorna 1
 int Imprime_Lista_Letra_Especifica(TDicionario* pDicionario, char letra){
     Apontador_Celula_Dicionario pAux;
     int achou_lista = 0;
@@ -52,6 +56,7 @@ int Imprime_Lista_Letra_Especifica(TDicionario* pDicionario, char letra){
     }
 }
 
+//Imprime diciionario todo. Caso dicionario e vazio, retorna 1
 int Imprime_Dicionario(TDicionario* pDicionario){
     Apontador_Celula_Dicionario pAux;
     pAux = pDicionario->pPrimeira_Lista->Prox_celula_lista; //primeira lista
@@ -75,11 +80,13 @@ int Imprime_Dicionario(TDicionario* pDicionario){
     return 0;
 }
 
+//Retorna 1 para dicionario vazio e 0 caso contrario
 int Dicionario_e_vazio(TDicionario* pDicionario){
     return (pDicionario->pPrimeira_Lista == pDicionario->pUltima_Lista);
     /*se ambos apontam pro mesmo, então ambos apontam para a celula cabeca e, consequentemente, o dicionario esta vazio*/
 }
 
+//Funcao que le arquivo a monta o dicionario. Retorna 1 para erro de abertura do arquivo.
 int Constroi_Dicionario (TDicionario* pDicionario, char* nome_arquivo_txt){
     FILE* arq;
 
@@ -134,6 +141,7 @@ int Constroi_Dicionario (TDicionario* pDicionario, char* nome_arquivo_txt){
     return 0;
 }
 
+//Parte da funcao constroi_dicionario responsavel por encadear celulas
 int Encadeia_Celula_Dicionario(TDicionario* pDicionario, char *string, char letra, int linha){
     Apontador_Celula_Dicionario pAux,pAux2,pGuardaEndereco;
     /*endereço celula cabeça*/
@@ -231,6 +239,7 @@ int Encadeia_Celula_Dicionario(TDicionario* pDicionario, char *string, char letr
     return 0;
 }
 
+//Remove uma dada palavra da lista. Caso a palavra nao exista, retorna 1.
 int Remove_palavra_especifica(TDicionario* pDicionario, char* string){
     char letra_chave = string[0];
     Apontador_Celula_Dicionario pAux;
@@ -251,6 +260,7 @@ int Remove_palavra_especifica(TDicionario* pDicionario, char* string){
     return 1;
 }
 
+//remove palavra do final de uma lista especifica. Se a lista for vazia, retorna 1.
 int Remove_ultima_palavra_lista(TDicionario* pDicionario, char letra_lista){
     Apontador_Celula_Dicionario pAux;
    
@@ -271,6 +281,7 @@ int Remove_ultima_palavra_lista(TDicionario* pDicionario, char letra_lista){
     return 1;
 }
 
+//remove lista inteira. Se a lista nao for removida (por nao existir), retorna 1.
 int Remove_celula_dicionario(TDicionario* pDicionario){
     Apontador_Celula_Dicionario pAux, removedor;
     int verificador;
@@ -330,7 +341,7 @@ int Tamanho_dicionario(TDicionario* pDicionario){
     return 0;
 }
 
-//Ordena dicionario dada um tipo de ordenacao
+//Ordena o dicionario todo dada uma operacao
 int Ordena_dicionario(TDicionario* pDicionario, int operacao){
     Apontador_Celula_Dicionario pAux = pDicionario->pPrimeira_Lista->Prox_celula_lista;
     /*
@@ -343,51 +354,33 @@ int Ordena_dicionario(TDicionario* pDicionario, int operacao){
     (7) = Voltar ao menu principal;
     */
     while (pAux != NULL){
+        //Confere se a lista e vazia. Se sim, passa para proxima lista
         if (leh_vazia(&pAux->lista)){ 
             printf("A lista da letra %c e vazia \n",pAux->letra_lista);
             continue;
         }
-        switch (operacao){
-            case 1:
-                BubbleSort(pAux->lista,numero_palavra(&pAux->lista));
-                break;
-            case 2:
-                Selecao(pAux->lista,numero_palavra(&pAux->lista));
-                break;
-            case 3:
-                Insercao(pAux->lista,numero_palavra(&pAux->lista));
-                break;
-            case 4:
-                ShellSort(pAux->lista,numero_palavra(&pAux->lista));
-                break;
-            case 5:
-                Quicksort(pAux->lista,numero_palavra(&pAux->lista));
-                break;
-            case 6:
-                Heapsort(pAux->lista,numero_palavra(&pAux->lista));
-                break;
-            case 7:
-                return 0;
-                break;
-            default:
-                printf("\nNumero de operacao invalido!!!");
-                break;
-        }
-        pAux = pAux->Prox_celula_lista;
+        Ordena_lista_especifica(pDicionario,operacao,pAux->letra_lista);
+        //!Observacao: Como a funcao ordena_lista_especifica ja ordena a lista, basta reutiliza-la para cada lista individualmente
+        pAux = pAux->Prox_celula_lista; //avanca para proxima lista
     }
     return 0;
 }
-//Ordena uma lista dada o tipo da ordenacao e a letra da lista a ser ordenada
+
+//Ordena uma lista dada o tipo da ordenacao e a letra da lista a ser ordenada. retorna 1 para lista vazia ou dicionario vazio
 int Ordena_lista_especifica(TDicionario *pDicionario, int operacao, char letra_da_lista){
     Apontador_Celula_Dicionario pAux = pDicionario->pPrimeira_Lista->Prox_celula_lista;
+    
+    //confere se dicionario e vazio:
     if (Dicionario_e_vazio(pDicionario)) {
         printf("Dicionario vazio\n");
         return 1;
     }
+    //avanca pelo dicionario procurando a lista especificada:
     while (pAux != NULL){
         if (pAux->letra_lista == letra_da_lista) break;
         else pAux = pAux->Prox_celula_lista;
-    }  
+    } 
+    //confere se a lista a ser ordenada e vazia: 
     if (leh_vazia(&pAux->lista)){ 
         printf("A lista da letra %c e vazia \n",pAux->letra_lista);
         return 1;
@@ -401,6 +394,8 @@ int Ordena_lista_especifica(TDicionario *pDicionario, int operacao, char letra_d
     (6) = Ordenar por HeapSort;
     (7) = Voltar ao menu principal;
     */
+
+    //Switch para escolher a operacao correta:
     switch (operacao){
         case 1:
             BubbleSort(pAux->lista,numero_palavra(&pAux->lista));

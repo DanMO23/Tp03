@@ -1,4 +1,4 @@
-#include "Headers/ShellSort.h"
+#include "Headers/TAD_Dicionario.h"
 
 //branch top
 int main(){
@@ -57,19 +57,19 @@ int main(){
             case 6:
                 Tamanho_dicionario(&Dicionario1);
                 break;
-            // case 7:
-            //     printf("Digite a letra chave da lista que deseja ordenar:\n");
-            //     scanf("\n%c", &letra_da_lista);
-            //     printf("\nDigite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
-            //     scanf("\n%d", &tipo_da_ordenacao);
-            //     //Ordena_lista_especifica(&Dicionario1, tipo_da_ordenacao,letra_da_lista);
-            //     break;
-            // case 8:
-            //     printf("Digite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
-            //     scanf("\n%d", &tipo_da_ordenacao);
-            //     //Ordena_dicionario(&Dicionario1, tipo_da_operacao);
-            //     break;
             case 7:
+                printf("Digite a letra chave da lista que deseja ordenar:\n");
+                scanf("\n%c", &letra_da_lista);
+                printf("\nDigite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
+                scanf("\n%d", &tipo_da_ordenacao);
+                Ordena_lista_especifica(&Dicionario1, tipo_da_ordenacao,letra_da_lista);
+                break;
+            case 8:
+                printf("Digite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
+                scanf("\n%d", &tipo_da_ordenacao);
+                Ordena_dicionario(&Dicionario1, tipo_da_ordenacao);
+                break;
+            case 9:
                 exit(0);
             default:
                 printf("Numero invalido. Favor inserir um numero valido!!! \n");
@@ -85,3 +85,7 @@ int main(){
     
     return 0;
 }
+
+/*
+gcc .\main.c .\Sources\Heapsort.c .\Sources\Ordenacao_simples.c .\Sources\Quicksort.c .\Sources\ShellSort.c .\Sources\TAD_dicionario.c .\Sources\TAD_lista.c .\Sources\TADPalavra.c .\Headers\Heapsort.h .\Headers\Ordenacao_simples.h .\Headers\Quicksort.h .\Headers\ShellSort.h .\Headers\TAD_dicionario.h .\Headers\TAD_lista.h .\Headers\TADPalavra.h -o run
+*/

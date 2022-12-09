@@ -1,4 +1,4 @@
-#include "TAD_lista.h"
+#include "ShellSort.h"
 
 //lembrar de modificar o include:
 //#include "../Zorzal/Files_h/Heapsort.h"
@@ -28,5 +28,5 @@ int Remove_palavra_especifica(TDicionario* pDicionario, char* string);
 int Remove_celula_dicionario(TDicionario* pDicionario);
 int Tamanho_lista_especifica(TDicionario* pDicionario, char letra_lista);
 int Tamanho_dicionario(TDicionario* pDicionario);
-// int Ordena_dicionario(TDicionario* pDicionario, int operacao);
-// int Ordenada_lista_especifica(TDicionario *pDicionario, int operacao, char letra_da_lista);
+int Ordena_dicionario(TDicionario* pDicionario, int operacao);
+int Ordena_lista_especifica(TDicionario *pDicionario, int operacao, char letra_da_lista);

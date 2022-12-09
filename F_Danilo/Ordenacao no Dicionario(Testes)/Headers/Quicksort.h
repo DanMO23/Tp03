@@ -5,7 +5,7 @@
 
 //=======================================
 //Lembrar de remover :
-#include "TAD_dicionario.h"
+#include "TAD_lista.h"
 
 void Particao(int Esq, int Dir, int *i, int *j, Tlista *lista);
 void Ordena(int Esq, int Dir, Tlista *lista);

@@ -25,6 +25,7 @@ void Constroi(Tlista *lista, int *n){
 int Heapsort(Tlista lista, int n){   
     int Esq, Dir,k;
     TADPalavra aux;
+    /*
     Constroi(&lista, &n); //constroi o heap 
     Esq = 0; Dir = (n)-1;
     while (Dir > 0)
@@ -35,6 +36,8 @@ int Heapsort(Tlista lista, int n){
         Dir--;
         Refaz(Esq, Dir, &lista);
     }
+    */
+   printf("entrou");
     
     printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nLista ordenada por Heapsort \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (k = 0; k< n; k++){

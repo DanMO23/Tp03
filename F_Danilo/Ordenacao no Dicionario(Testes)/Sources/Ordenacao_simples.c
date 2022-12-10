@@ -7,17 +7,18 @@ Retorna 0: as duas strings sao iguais
 */
 
 //Ordena lista pelo metodo selecao
-int Selecao(Tlista lista, int tam){
+int Selecao(Tlista lista, int tam,int *conta_movimentacao, int *conta_comparacao){
     
     clock_t t;
     t = clock();
-    int conta_movimentacao = 0, conta_comparacao = 0;
+    *(conta_comparacao) = 0;
+    *(conta_movimentacao) = 0;
     int i, j, Min,k;
     TADPalavra aux;
     for (i = 0; i < (tam-1); i++ ){
         Min = i;
         for (j = i + 1; j < tam; j++){
-            conta_comparacao++;
+            *(conta_comparacao) += 1;
             if (strcmp(lista.Lista[j].palavra.string_aloc, lista.Lista[Min].palavra.string_aloc) < 0){
             Min = j;
             } 
@@ -25,64 +26,66 @@ int Selecao(Tlista lista, int tam){
         aux = lista.Lista[Min].palavra;
         lista.Lista[Min].palavra = lista.Lista[i].palavra;
         lista.Lista[i].palavra = aux;
+        *(conta_movimentacao) += 1;
     }
     
     t = clock() - t;
     //Parte que printa resultado da ordenacao na tela:
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por selecao \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por selecao \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (k = 0; k< tam; k++){
         printf("%s\n",lista.Lista[k].palavra.string_aloc);
     }
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    printf("Numero de Movimentacoes: %d\n",conta_movimentacao);
-    printf("Numero de Comparacoes: %d\n",conta_comparacao);
-    printf("Tempo de execucao do insercao: %lfms\n",((double)t)/((CLOCKS_PER_SEC/1000)));
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    //printf("Numero de Movimentacoes: %d\n",conta_movimentacao);
+    //printf("Numero de Comparacoes: %d\n",conta_comparacao);
+    //printf("Tempo de execucao do insercao: %lfms\n",((double)t)/((CLOCKS_PER_SEC/1000)));
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
     return 0;
 }
 
 //Ordena lista pelo metodo insercao
-int Insercao(Tlista lista, int tam){
+int Insercao(Tlista lista, int tam, int *conta_movimentacao, int *conta_comparacao){
 
     clock_t t;
     t = clock();
-    int conta_movimentacao = 0, conta_comparacao = 0;
+    *(conta_movimentacao) = 0;
+    *(conta_comparacao) = 0;
     int i, j,k;
     TADPalavra aux;
     
     for (i = 1; i < tam; i++){
         aux = lista.Lista[i].palavra;
         j = i - 1;
-        conta_comparacao++;
+        *(conta_comparacao) += 1;
         while((j >= 0) && ((strcmp(aux.string_aloc,lista.Lista[j].palavra.string_aloc)) < 0 )){
             lista.Lista[j + 1].palavra = lista.Lista[j].palavra;
             j--;
-            conta_comparacao++;
-            conta_movimentacao++;
+            *(conta_comparacao) += 1;
+            *(conta_movimentacao) += 1;
         }
         lista.Lista[j+1].palavra = aux;
-        conta_movimentacao++;
+        *(conta_movimentacao) += 1;
     }
     t = clock() - t;
 
     //Parte que printa resultado da ordenacao na tela:
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por insercao \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por insercao \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (k = 0; k< tam; k++){
         printf("%s\n",lista.Lista[k].palavra.string_aloc);
     }
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-    printf("Numero de Movimentacoes: %d\n",conta_movimentacao);
-    printf("Numero de Comparacoes: %d\n",conta_comparacao);
-    printf("Tempo de execucao do insercao: %lfms\n",((double)t)/((CLOCKS_PER_SEC/1000)));
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    //printf("Numero de Movimentacoes: %d\n",conta_movimentacao);
+    //printf("Numero de Comparacoes: %d\n",conta_comparacao);
+    //printf("Tempo de execucao do insercao: %lfms\n",((double)t)/((CLOCKS_PER_SEC/1000)));
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;
 }
 
-void BubbleSort(Tlista lista, int tam){
-    clock_t t;
-    t = clock();
-    int conta_movimentacao = 0, conta_comparacao = 0;
+void BubbleSort(Tlista lista, int tam, int *conta_movimentacao, int *conta_comparacao){
+
+    *(conta_movimentacao) = 0; 
+    *(conta_comparacao) = 0;
     int i;     
     TADPalavra aux1,aux2;
         int trocou = 1;
@@ -93,28 +96,21 @@ void BubbleSort(Tlista lista, int tam){
         for (int i = 0; i < tam-1; i++){
         aux1 = lista.Lista[i].palavra;   
         aux2 = lista.Lista[i+1].palavra;  
-        conta_comparacao++;
+        *(conta_comparacao) += 1;
             if (strcmp(aux1.string_aloc, aux2.string_aloc) > 0){
                 /*Realiza a troca*/
-                 conta_movimentacao++;
+                *(conta_movimentacao) +=1;
                 lista.Lista[i+1].palavra= aux1;
-                conta_movimentacao++;
-               lista.Lista[i].palavra= aux2;
+                *(conta_movimentacao) +=1;
+                lista.Lista[i].palavra= aux2;
                 trocou = 1; 
             }
         }
     }
-    t = clock() - t;
-    printf("=-=-=-=-=-=-=-=-=-=\n");
-    printf("Sequencia reordenada por Bubble:\n");
-    printf("=-=-=-=-=-=-=-=-=-=\n");
+    //printf("=-=-=-=-=-=-=-=-=-=\n");
+    //printf("Sequencia reordenada por Bubble:\n");
+    //printf("=-=-=-=-=-=-=-=-=-=\n");
     for (int i = 0; i < tam; i++)
         printf("%s \n", lista.Lista[i].palavra.string_aloc);
     printf("\n");
-
-      printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    printf("Numero de Movimentacoes: %d\n",conta_movimentacao);
-    printf("Numero de Comparacoes: %d\n",conta_comparacao);
-    printf("Tempo de execucao do insercao: %lfms\n",((double)t)/((CLOCKS_PER_SEC/1000)));
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 }

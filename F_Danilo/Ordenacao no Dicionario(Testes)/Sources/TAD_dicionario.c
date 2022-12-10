@@ -342,8 +342,14 @@ int Tamanho_dicionario(TDicionario* pDicionario){
 }
 
 //Ordena o dicionario todo dada uma operacao
-int Ordena_dicionario(TDicionario* pDicionario, int operacao){
+int Ordena_dicionario(TDicionario *pDicionario, int operacao, char letra_da_lista,int *conta_movimentacao, int *conta_comparacao, double *conta_tempo){
     Apontador_Celula_Dicionario pAux = pDicionario->pPrimeira_Lista->Prox_celula_lista;
+    *(conta_movimentacao) = 0;
+    *(conta_comparacao) = 0;
+    *(conta_tempo) = 0;
+    double conta_tempo_aux = 0;
+    int conta_comparacao_aux = 0;
+    int conta_movimentacao_aux = 0;
     /*
     (1) = Ordenar por BubbleSort;
     (2) = Ordenar por Selecao;
@@ -353,23 +359,35 @@ int Ordena_dicionario(TDicionario* pDicionario, int operacao){
     (6) = Ordenar por HeapSort;
     (7) = Voltar ao menu principal;
     */
+   
     while (pAux != NULL){
         //Confere se a lista e vazia. Se sim, passa para proxima lista
         if (leh_vazia(&pAux->lista)){ 
             printf("A lista da letra %c e vazia \n",pAux->letra_lista);
             continue;
         }
-        Ordena_lista_especifica(pDicionario,operacao,pAux->letra_lista);
+        Chama_ordena(&pAux->lista, operacao, numero_palavra(&pAux->lista), &conta_movimentacao_aux, &conta_comparacao_aux, &conta_tempo_aux);
         //!Observacao: Como a funcao ordena_lista_especifica ja ordena a lista, basta reutiliza-la para cada lista individualmente
+        *(conta_movimentacao) += conta_movimentacao_aux;
+        *(conta_comparacao) += conta_comparacao_aux;
+        *(conta_tempo) += conta_tempo_aux;
         pAux = pAux->Prox_celula_lista; //avanca para proxima lista
     }
+    
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    printf("Numero de Movimentacoes: %d\n",*(conta_movimentacao));
+    printf("Numero de Comparacoes: %d\n",*(conta_comparacao));
+    printf("Tempo de execucao do insercao: %lfms\n",((double)*(conta_tempo))/((CLOCKS_PER_SEC/1000)));
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;
 }
 
 //Ordena uma lista dada o tipo da ordenacao e a letra da lista a ser ordenada. retorna 1 para lista vazia ou dicionario vazio
-int Ordena_lista_especifica(TDicionario *pDicionario, int operacao, char letra_da_lista){
+int Ordena_lista_especifica(TDicionario *pDicionario, int operacao, char letra_da_lista,int *conta_movimentacao, int *conta_comparacao, double *conta_tempo){
     Apontador_Celula_Dicionario pAux = pDicionario->pPrimeira_Lista->Prox_celula_lista;
-    
+    *(conta_movimentacao) = 0; 
+    *(conta_comparacao) = 0;
+    *(conta_tempo) = 0;
     //confere se dicionario e vazio:
     if (Dicionario_e_vazio(pDicionario)) {
         printf("Dicionario vazio\n");
@@ -396,24 +414,66 @@ int Ordena_lista_especifica(TDicionario *pDicionario, int operacao, char letra_d
     */
 
     //Switch para escolher a operacao correta:
+    Chama_ordena(&pAux->lista, operacao, numero_palavra(&pAux->lista),conta_movimentacao, conta_comparacao, conta_tempo);
+
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    printf("Numero de Movimentacoes: %d\n",*(conta_movimentacao));
+    printf("Numero de Comparacoes: %d\n",*(conta_comparacao));
+    printf("Tempo de execucao do insercao: %lfms\n",((double)*(conta_tempo))/((CLOCKS_PER_SEC/1000)));
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+
+    return 0;
+}
+
+int Chama_ordena(Tlista *lista, int operacao, int tam, int *conta_movimentacao, int *conta_comparacao, double *conta_tempo){
+
+    clock_t t;
+    t = clock();
+    /*
+    (1) = Ordenar por BubbleSort;
+    (2) = Ordenar por Selecao;
+    (3) = Ordenar por Insercao;
+    (4) = Ordenar por ShellSort;
+    (5) = Ordenar por QuickSort;
+    (6) = Ordenar por HeapSort;
+    (7) = Voltar ao menu principal;
+    */
     switch (operacao){
         case 1:
-            BubbleSort(pAux->lista,numero_palavra(&pAux->lista));
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            printf("Sequencia reordenada por Bubble:\n");
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            BubbleSort(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 2:
-            Selecao(pAux->lista,numero_palavra(&pAux->lista));
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            printf("Sequencia reordenada por Selecao:\n");
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            Selecao(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 3:
-            Insercao(pAux->lista,numero_palavra(&pAux->lista));
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            printf("Sequencia reordenada por Insercao:\n");
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            Insercao(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 4:
-            ShellSort(pAux->lista,numero_palavra(&pAux->lista));
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            printf("Sequencia reordenada por Shellsort:\n");
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            ShellSort(*(lista),tam);
             break;
         case 5:
-            Quicksort(pAux->lista,numero_palavra(&pAux->lista));
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            printf("Sequencia reordenada por Quicksort:\n");
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            Quicksort(*(lista),tam);
             break;
         case 6:
-            Heapsort(pAux->lista,numero_palavra(&pAux->lista));
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            printf("Sequencia reordenada por Heapsort:\n");
+            printf("=-=-=-=-=-=-=-=-=-=\n");
+            Heapsort(*(lista),tam);
             break;
         case 7:
             return 0;
@@ -422,5 +482,12 @@ int Ordena_lista_especifica(TDicionario *pDicionario, int operacao, char letra_d
             printf("\nNumero de operacao invalido!!!");
             break;
     }
+    t = clock() - t;
+    *(conta_tempo) = t;
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    //printf("Numero de Movimentacoes: %d\n",*(conta_movimentacao));
+    //printf("Numero de Comparacoes: %d\n",*(conta_comparacao));
+    //printf("Tempo de execucao do insercao: %lfms\n",((double)t)/((CLOCKS_PER_SEC/1000)));
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;
 }

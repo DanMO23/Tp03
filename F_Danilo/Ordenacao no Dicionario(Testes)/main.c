@@ -1,11 +1,15 @@
 #include "Headers/TAD_dicionario.h"
 
 //branch top
+/*
+gcc .\main.c .\Headers\Heapsort.h .\Headers\Ordenacao_simples.h .\Headers\Quicksort.h .\Headers\ShellSort.h .\Headers\TAD_dicionario.h .\Headers\TAD_lista.h .\Headers\TADPalavra.h .\Sources\Heapsort.c .\Sources\Ordenacao_simples.c .\Sources\Quicksort.c .\Sources\ShellSort.c .\Sources\TAD_dicionario.c .\Sources\TADPalavra.c .\Sources\TAD_lista.c -o run
+*/
 int main(){
     TDicionario Dicionario1;
     char nome_arquivo[400];
     char palavra_removida[80];
-    int operacao, tipo_da_ordenacao;
+    int operacao, tipo_da_ordenacao,conta_movimentacao = 0,conta_comparacao = 0;
+    double conta_tempo = 0;
     int testa_arquivo;
     char letra_da_lista, lixo;
 
@@ -28,7 +32,9 @@ int main(){
     }
     printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Ordenar lista especifica;\n(8) = Ordenar dicionario todo;\n(9) = Sair;\n");
     scanf("%d", &operacao);
-    do{    
+    do{ 
+        conta_movimentacao = 0;
+        conta_comparacao = 0;   
         switch (operacao) {
             case 1: 
                 Imprime_Dicionario(&Dicionario1); 
@@ -62,12 +68,12 @@ int main(){
                 scanf("\n%c", &letra_da_lista);
                 printf("\nDigite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
                 scanf("\n%d", &tipo_da_ordenacao);
-                Ordena_lista_especifica(&Dicionario1, tipo_da_ordenacao,letra_da_lista);
+                Ordena_lista_especifica(&Dicionario1, tipo_da_ordenacao,letra_da_lista,&conta_comparacao,&conta_movimentacao,&conta_tempo);
                 break;
             case 8:
                 printf("Digite o numero da operacao:\n(1) = Ordenar por BubbleSort;\n(2) = Ordenar por Selecao;\n(3) = Ordenar por Insercao;\n(4) = Ordenar por ShellSort;\n(5) = Ordenar por QuickSort;\n(6) = Ordenar por HeapSort;\n(7) = Voltar ao menu principal;\n");
                 scanf("\n%d", &tipo_da_ordenacao);
-                Ordena_dicionario(&Dicionario1, tipo_da_ordenacao);
+                Ordena_dicionario(&Dicionario1, tipo_da_ordenacao, letra_da_lista, &conta_movimentacao, &conta_comparacao, &conta_tempo);
                 break;
             case 9:
                 exit(0);

@@ -32,7 +32,7 @@ void Ordena(int Esq, int Dir, Tlista *lista,int *conta_comparacao, int *conta_mo
     if (i < Dir) Ordena(i, Dir, lista,conta_comparacao,conta_movimentacao);
 }
 
-//Ordena ista via quicksort. 
+//Ordena lista via quicksort. 
 int Quicksort(Tlista lista, int n, int *conta_movimentacao, int *conta_comparacao){
 
     *(conta_comparacao) = 0;
@@ -41,7 +41,7 @@ int Quicksort(Tlista lista, int n, int *conta_movimentacao, int *conta_comparaca
 
     Ordena(0, n-1, &lista,conta_comparacao,conta_movimentacao);
     
-    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por quicksort \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    //Parte que printa resultado da ordenacao na tela:
     for (k = 0; k< n; k++){
         printf("%s\n",lista.Lista[k].palavra.string_aloc);
     }

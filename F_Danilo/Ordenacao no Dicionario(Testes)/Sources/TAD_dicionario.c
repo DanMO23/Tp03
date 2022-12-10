@@ -341,7 +341,7 @@ int Tamanho_dicionario(TDicionario* pDicionario){
     return 0;
 }
 
-//Ordena o dicionario todo dada uma operacao
+//Ordena o dicionario todo dada uma operacao. Retorna 1 para dicionario vazio
 int Ordena_dicionario(TDicionario *pDicionario, int operacao, char letra_da_lista,int *conta_movimentacao, int *conta_comparacao, double *conta_tempo){
     Apontador_Celula_Dicionario pAux = pDicionario->pPrimeira_Lista->Prox_celula_lista;
     *(conta_movimentacao) = 0;
@@ -359,7 +359,7 @@ int Ordena_dicionario(TDicionario *pDicionario, int operacao, char letra_da_list
     (6) = Ordenar por HeapSort;
     (7) = Voltar ao menu principal;
     */
-   
+    if (Dicionario_e_vazio(pDicionario)) return 1;
     while (pAux != NULL){
         //Confere se a lista e vazia. Se sim, passa para proxima lista
         if (leh_vazia(&pAux->lista)){ 
@@ -377,7 +377,7 @@ int Ordena_dicionario(TDicionario *pDicionario, int operacao, char letra_da_list
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     printf("Numero de Movimentacoes: %d\n",*(conta_movimentacao));
     printf("Numero de Comparacoes: %d\n",*(conta_comparacao));
-    printf("Tempo de execucao do insercao: %lfms\n",((double)*(conta_tempo))/((CLOCKS_PER_SEC/1000)));
+    printf("Tempo de execucao: %lfms\n",((double)*(conta_tempo))/((CLOCKS_PER_SEC/1000)));
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;
 }
@@ -419,12 +419,13 @@ int Ordena_lista_especifica(TDicionario *pDicionario, int operacao, char letra_d
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     printf("Numero de Movimentacoes: %d\n",*(conta_movimentacao));
     printf("Numero de Comparacoes: %d\n",*(conta_comparacao));
-    printf("Tempo de execucao do insercao: %lfms\n",((double)*(conta_tempo))/((CLOCKS_PER_SEC/1000)));
+    printf("Tempo de execucao: %lfms\n",((double)*(conta_tempo))/((CLOCKS_PER_SEC/1000)));
     printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
 
     return 0;
 }
 
+//Chama as funcoes de ordenacao
 int Chama_ordena(Tlista *lista, int operacao, int tam, int *conta_movimentacao, int *conta_comparacao, double *conta_tempo){
 
     clock_t t;
@@ -484,10 +485,5 @@ int Chama_ordena(Tlista *lista, int operacao, int tam, int *conta_movimentacao, 
     }
     t = clock() - t;
     *(conta_tempo) = t;
-    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    //printf("Numero de Movimentacoes: %d\n",*(conta_movimentacao));
-    //printf("Numero de Comparacoes: %d\n",*(conta_comparacao));
-    //printf("Tempo de execucao do insercao: %lfms\n",((double)t)/((CLOCKS_PER_SEC/1000)));
-    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;
 }

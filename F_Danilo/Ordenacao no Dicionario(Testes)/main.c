@@ -101,8 +101,6 @@ int main(){
         scanf("%c", &lixo);
         scanf("\n%d", &operacao);
     }while(operacao!=10);
-
-
     
     return 0;
 }

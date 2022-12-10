@@ -1,8 +1,5 @@
 #include "ShellSort.h"
 
-//lembrar de modificar o include:
-//#include "../Zorzal/Files_h/Heapsort.h"
-
 typedef struct CelulaDicionario* Apontador_Celula_Dicionario; //Ponteiro pra TCelula
 //Apontador_Celula_Lista
 

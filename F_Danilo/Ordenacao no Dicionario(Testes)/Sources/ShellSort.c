@@ -30,7 +30,6 @@ void ShellSort(Tlista lista, int tam, int *conta_movimentacao, int *conta_compar
     } while (h != 1);
 
     //Parte que printa resultado da ordenacao na tela:
-    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por shellsort\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (i = 0; i< tam; i++){
         printf("%s\n",lista.Lista[i].palavra.string_aloc);
     }

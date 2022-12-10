@@ -44,8 +44,8 @@ int Heapsort(Tlista lista_aux, int n, int *conta_movimentacao, int *conta_compar
     *(conta_comparacao) = 0;
     int Esq, Dir,k;
     Tlista lista;
-    if (numero_palavra(&lista_aux) == MaxTam-1){
-        printf("Lista muito grande\n");
+    if (numero_palavra(&lista_aux) >= MaxTam-1){
+        printf("Lista com tamanho maximo da lista. Nao é possivel ordenar\n");
         return 1;
     }
     for (k = 0; k < MaxTam-1; k++){
@@ -63,7 +63,7 @@ int Heapsort(Tlista lista_aux, int n, int *conta_movimentacao, int *conta_compar
         Refaz(Esq, Dir, &lista,conta_comparacao,conta_movimentacao);
     }
     
-    //printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nLista ordenada por Heapsort \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    //Parte que printa resultado da ordenacao na tela:
     for (k = 1; k<= n; k++){
         printf("%s\n",lista.Lista[k].palavra.string_aloc);
     }

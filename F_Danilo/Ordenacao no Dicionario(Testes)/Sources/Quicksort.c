@@ -33,23 +33,17 @@ void Ordena(int Esq, int Dir, Tlista *lista,int *conta_comparacao, int *conta_mo
 }
 
 //Ordena ista via quicksort. 
-int Quicksort(Tlista lista, int n){
-    clock_t t;
-    t = clock();
-    int conta_movimentacao = 0, conta_comparacao = 0;
+int Quicksort(Tlista lista, int n, int *conta_movimentacao, int *conta_comparacao){
+
+    *(conta_comparacao) = 0;
+    *(conta_movimentacao) = 0;
     int k;
 
-    Ordena(0, n-1, &lista,&conta_comparacao,&conta_movimentacao);
+    Ordena(0, n-1, &lista,conta_comparacao,conta_movimentacao);
     
-    t = clock() - t;
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por quicksort \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por quicksort \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (k = 0; k< n; k++){
         printf("%s\n",lista.Lista[k].palavra.string_aloc);
     }
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-    printf("Numero de Movimentacoes: %d\n",conta_movimentacao);
-    printf("Numero de Comparacoes: %d\n",conta_comparacao);
-    printf("Tempo de execucao do insercao: %lfms\n",((double)t)/((CLOCKS_PER_SEC/1000)));
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;
 }

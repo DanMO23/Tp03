@@ -39,10 +39,9 @@ void Constroi(Tlista *lista, int *n,int *conta_comparacao,int *conta_movimentaca
 }
 
 //Ordena uma lista usando heapsort. Como o metodo heap parte do 1, retorna 1 para uma lista >= maxtam-1
-int Heapsort(Tlista lista_aux, int n){   
-    clock_t t;
-    t = clock();
-    int conta_movimentacao = 0, conta_comparacao = 0;
+int Heapsort(Tlista lista_aux, int n, int *conta_movimentacao, int *conta_comparacao){   
+    *(conta_movimentacao) = 0;
+    *(conta_comparacao) = 0;
     int Esq, Dir,k;
     Tlista lista;
     if (numero_palavra(&lista_aux) == MaxTam-1){
@@ -53,7 +52,7 @@ int Heapsort(Tlista lista_aux, int n){
         lista.Lista[k+1].palavra = lista_aux.Lista[k].palavra;
     }
     TADPalavra aux;
-    Constroi(&lista, &n,&conta_comparacao,&conta_movimentacao); //constroi o heap 
+    Constroi(&lista, &n,conta_comparacao,conta_movimentacao); //constroi o heap 
     Esq = 1; Dir = (n);
     while (Dir > 1)
     { //ordena o vetor 
@@ -61,18 +60,12 @@ int Heapsort(Tlista lista_aux, int n){
         lista.Lista[1].palavra = lista.Lista[Dir].palavra;
         lista.Lista[Dir].palavra = aux;
         Dir--;
-        Refaz(Esq, Dir, &lista,&conta_comparacao,&conta_movimentacao);
+        Refaz(Esq, Dir, &lista,conta_comparacao,conta_movimentacao);
     }
     
-    t = clock() - t;
-    printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nLista ordenada por Heapsort \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    //printf("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\nLista ordenada por Heapsort \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (k = 1; k<= n; k++){
         printf("%s\n",lista.Lista[k].palavra.string_aloc);
     }
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-    printf("Numero de Movimentacoes: %d\n",conta_movimentacao);
-    printf("Numero de Comparacoes: %d\n",conta_comparacao);
-    printf("Tempo de execucao do insercao: %lfms\n",((double)t)/((CLOCKS_PER_SEC/1000)));
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     return 0;
 }

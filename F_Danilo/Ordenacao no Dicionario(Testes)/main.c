@@ -1,5 +1,5 @@
 #include "Headers/TAD_dicionario.h"
-
+#include <windows.h>
 //branch top
 /*
 gcc .\main.c .\Headers\Heapsort.h .\Headers\Ordenacao_simples.h .\Headers\Quicksort.h .\Headers\ShellSort.h .\Headers\TAD_dicionario.h .\Headers\TAD_lista.h .\Headers\TADPalavra.h .\Sources\Heapsort.c .\Sources\Ordenacao_simples.c .\Sources\Quicksort.c .\Sources\ShellSort.c .\Sources\TAD_dicionario.c .\Sources\TADPalavra.c .\Sources\TAD_lista.c -o run
@@ -30,7 +30,7 @@ int main(){
     if (testa_arquivo==1){
         exit(1);
     }
-    printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Ordenar lista especifica;\n(8) = Ordenar dicionario todo;\n(9) = Sair;\n");
+    printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Ordenar lista especifica;\n(8) = Ordenar dicionario todo;\n(9) = Clear console;\n(10) = Sair;\n");
     scanf("%d", &operacao);
     do{ 
         conta_movimentacao = 0;
@@ -76,16 +76,19 @@ int main(){
                 Ordena_dicionario(&Dicionario1, tipo_da_ordenacao, letra_da_lista, &conta_movimentacao, &conta_comparacao, &conta_tempo);
                 break;
             case 9:
+                system("clear");
+                break;
+            case 10:
                 exit(0);
             default:
                 printf("Numero invalido. Favor inserir um numero valido!!! \n");
                 break;
         }
-        printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Ordenar lista especifica;\n(8) = Ordenar dicionario todo;\n(9) = Sair;\n");
+        printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Ordenar lista especifica;\n(8) = Ordenar dicionario todo;\n(9) Clear console;\n(10) = Sair;\n");
         operacao = 0;
         scanf("%c", &lixo);
         scanf("\n%d", &operacao);
-    }while(operacao!=9);
+    }while(operacao!=10);
 
 
     

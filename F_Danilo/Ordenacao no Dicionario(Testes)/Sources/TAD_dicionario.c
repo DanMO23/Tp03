@@ -461,19 +461,19 @@ int Chama_ordena(Tlista *lista, int operacao, int tam, int *conta_movimentacao, 
             printf("=-=-=-=-=-=-=-=-=-=\n");
             printf("Sequencia reordenada por Shellsort:\n");
             printf("=-=-=-=-=-=-=-=-=-=\n");
-            ShellSort(*(lista),tam);
+            ShellSort(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 5:
             printf("=-=-=-=-=-=-=-=-=-=\n");
             printf("Sequencia reordenada por Quicksort:\n");
             printf("=-=-=-=-=-=-=-=-=-=\n");
-            Quicksort(*(lista),tam);
+            Quicksort(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 6:
             printf("=-=-=-=-=-=-=-=-=-=\n");
             printf("Sequencia reordenada por Heapsort:\n");
             printf("=-=-=-=-=-=-=-=-=-=\n");
-            Heapsort(*(lista),tam);
+            Heapsort(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 7:
             return 0;

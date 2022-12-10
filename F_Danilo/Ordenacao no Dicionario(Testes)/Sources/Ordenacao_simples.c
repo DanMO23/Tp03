@@ -9,8 +9,6 @@ Retorna 0: as duas strings sao iguais
 //Ordena lista pelo metodo selecao
 int Selecao(Tlista lista, int tam,int *conta_movimentacao, int *conta_comparacao){
     
-    clock_t t;
-    t = clock();
     *(conta_comparacao) = 0;
     *(conta_movimentacao) = 0;
     int i, j, Min,k;
@@ -28,8 +26,7 @@ int Selecao(Tlista lista, int tam,int *conta_movimentacao, int *conta_comparacao
         lista.Lista[i].palavra = aux;
         *(conta_movimentacao) += 1;
     }
-    
-    t = clock() - t;
+
     //Parte que printa resultado da ordenacao na tela:
     //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por selecao \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
     for (k = 0; k< tam; k++){
@@ -47,8 +44,6 @@ int Selecao(Tlista lista, int tam,int *conta_movimentacao, int *conta_comparacao
 //Ordena lista pelo metodo insercao
 int Insercao(Tlista lista, int tam, int *conta_movimentacao, int *conta_comparacao){
 
-    clock_t t;
-    t = clock();
     *(conta_movimentacao) = 0;
     *(conta_comparacao) = 0;
     int i, j,k;
@@ -67,7 +62,6 @@ int Insercao(Tlista lista, int tam, int *conta_movimentacao, int *conta_comparac
         lista.Lista[j+1].palavra = aux;
         *(conta_movimentacao) += 1;
     }
-    t = clock() - t;
 
     //Parte que printa resultado da ordenacao na tela:
     //printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n Lista ordenada por insercao \n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");

@@ -1,5 +1,11 @@
 #include "Headers/TAD_dicionario.h"
-#include <windows.h>
+#ifdef _linux_ 
+    #include <unistd.h>
+#elif _WIN32
+    #include <windows.h>
+#else
+
+#endif
 //branch top
 /*
 gcc .\main.c .\Headers\Heapsort.h .\Headers\Ordenacao_simples.h .\Headers\Quicksort.h .\Headers\ShellSort.h .\Headers\TAD_dicionario.h .\Headers\TAD_lista.h .\Headers\TADPalavra.h .\Sources\Heapsort.c .\Sources\Ordenacao_simples.c .\Sources\Quicksort.c .\Sources\ShellSort.c .\Sources\TAD_dicionario.c .\Sources\TADPalavra.c .\Sources\TAD_lista.c -o run
@@ -76,7 +82,13 @@ int main(){
                 Ordena_dicionario(&Dicionario1, tipo_da_ordenacao, letra_da_lista, &conta_movimentacao, &conta_comparacao, &conta_tempo);
                 break;
             case 9:
-                system("clear");
+                #ifdef _linux_ 
+                    system("clear");
+                #elif _WIN32
+                    system("cls");
+                #else
+
+                #endif
                 break;
             case 10:
                 exit(0);
@@ -84,7 +96,7 @@ int main(){
                 printf("Numero invalido. Favor inserir um numero valido!!! \n");
                 break;
         }
-        printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Ordenar lista especifica;\n(8) = Ordenar dicionario todo;\n(9) Clear console;\n(10) = Sair;\n");
+        printf("\nQual operacao deseja efetuar:\n\n(1) = Imprime lista inteira;\n(2) = Imprime lista de uma letra especifica;\n(3) = Remove palavra especifica;\n(4) = Remove do final;\n(5) = Tamanho de lista especifica;\n(6) = Tamanho do dicionario;\n(7) = Ordenar lista especifica;\n(8) = Ordenar dicionario todo;\n(9) = Clear console;\n(10) = Sair;\n");
         operacao = 0;
         scanf("%c", &lixo);
         scanf("\n%d", &operacao);

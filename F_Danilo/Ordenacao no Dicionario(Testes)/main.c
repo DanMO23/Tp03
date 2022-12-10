@@ -1,5 +1,5 @@
 #include "Headers/TAD_dicionario.h"
-#ifdef _linux_ 
+#ifdef __linux__ 
     #include <unistd.h>
 #elif _WIN32
     #include <windows.h>
@@ -82,7 +82,7 @@ int main(){
                 Ordena_dicionario(&Dicionario1, tipo_da_ordenacao, letra_da_lista, &conta_movimentacao, &conta_comparacao, &conta_tempo);
                 break;
             case 9:
-                #ifdef _linux_ 
+                #ifdef __linux__
                     system("clear");
                 #elif _WIN32
                     system("cls");

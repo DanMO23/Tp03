@@ -7,19 +7,18 @@ void Particao(int Esq, int Dir, int *i, int *j, Tlista *lista, int *conta_compar
     do{
         *(conta_comparacao) += 1;
         while (strcmp(pivo.string_aloc, lista->Lista[*i].palavra.string_aloc) > 0){
-            *(conta_comparacao) += 1;
             (*i)++;
         } 
+        *(conta_comparacao) += 1;
         while (strcmp(pivo.string_aloc, lista->Lista[*j].palavra.string_aloc) < 0){
             (*j)--;
-            *(conta_comparacao) += 1;
         }
         if (*i <= *j){
             *(conta_comparacao) += 1;
             aux = lista->Lista[*i].palavra; 
             lista->Lista[*i].palavra =  lista->Lista[*j].palavra;
             lista->Lista[*j].palavra = aux;
-            *(conta_movimentacao) += 1;
+            *(conta_movimentacao) += 3;
             (*i)++; (*j)--;
         }
     } while (*i <= *j);

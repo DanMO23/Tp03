@@ -4,15 +4,14 @@
 void Refaz(int Esq, int Dir, Tlista *lista,int *conta_comparacao,int *conta_movimentacao){
     int j = Esq * 2;
     TADPalavra aux = lista->Lista[Esq].palavra;
-    *(conta_comparacao) += 1;
     while (j <= Dir){
-        *(conta_comparacao) += 1;
+
         *(conta_comparacao) += 1;
         if ((j < Dir)&&(strcmp(lista->Lista[j].palavra.string_aloc,lista->Lista[j+1].palavra.string_aloc) < 0)){
              j++;
         }
+
         *(conta_comparacao) += 1;
-    
         if (strcmp(aux.string_aloc, lista->Lista[j].palavra.string_aloc) >= 0){
             break;
         }
@@ -30,9 +29,7 @@ void Refaz(int Esq, int Dir, Tlista *lista,int *conta_comparacao,int *conta_movi
 void Constroi(Tlista *lista, int *n,int *conta_comparacao,int *conta_movimentacao){
     int Esq;
     Esq = *n / 2 + 1;
-    *(conta_comparacao) += 1;
     while (Esq > 1){
-        *(conta_comparacao) += 1;
         Esq--;
         Refaz(Esq, *n, lista, conta_comparacao, conta_movimentacao);
     }

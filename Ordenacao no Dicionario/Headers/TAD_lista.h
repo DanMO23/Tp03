@@ -1,5 +1,5 @@
 #include "TADPalavra.h"
-#define MaxTam 10
+#define MaxTam 100
 #define Inicio 0
 
 typedef struct Celula
@@ -22,3 +22,7 @@ int remove_final(Tlista *lista);
 int verifica_palavra(Tlista *lista, char *palavra);
 int numero_palavra(Tlista *lista);
 void imprimi_lista(Tlista *lista);
+
+
+
+

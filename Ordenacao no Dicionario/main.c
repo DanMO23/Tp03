@@ -20,9 +20,9 @@ int main(){
     char letra_da_lista, lixo;
 
     printf("Escreva o path do arquivo (ex.: 'texto.txt'):\n");
-    //scanf("%s", nome_arquivo);
+    scanf("%s", nome_arquivo);
 
-    strcpy(nome_arquivo, "texto.txt");
+    
 
     printf("Nome/endereco do arquivo: %s \n",nome_arquivo);
     /*

@@ -128,8 +128,9 @@ int Constroi_Dicionario (TDicionario* pDicionario, char* nome_arquivo_txt){
       
         sep = fgetc(arq);
 
-        if(sep == '\n'){
+        if(sep == '\n' || sep =='\r'){
             linha++;
+            
         }
         if(sep == EOF){
             break;
@@ -174,7 +175,7 @@ int Encadeia_Celula_Dicionario(TDicionario* pDicionario, char *string, char letr
         pDicionario->pUltima_Lista->letra_lista = letra;
         cria_lista(&pDicionario->pUltima_Lista->lista);
         insere_palavra_linha(&pDicionario->pUltima_Lista->lista, linha, string);
-       
+        
 
     }
     else{

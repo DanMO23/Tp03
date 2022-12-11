@@ -399,6 +399,10 @@ int Ordena_lista_especifica(TDicionario *pDicionario, int operacao, char letra_d
         if (pAux->letra_lista == letra_da_lista) break;
         else pAux = pAux->Prox_celula_lista;
     } 
+    if (pAux == NULL){
+        printf("A lista escolhida nao existe!!\n");
+        return 1;
+    }
     //confere se a lista a ser ordenada e vazia: 
     if (leh_vazia(&pAux->lista)){ 
         printf("A lista da letra %c e vazia \n",pAux->letra_lista);

@@ -1,7 +1,1 @@
 *.exe
-teste_heap_velho.c
-funcoes_zorzal.c
-funcoes_zorzal.h 
-heap_partindo_do_zero.c
-heap_velho.c
-makefile

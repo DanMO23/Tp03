@@ -1,5 +1,5 @@
 #include "../Headers/TAD_lista.h"
-
+//Fução cria da início dinamicamente a uma lista encadeada com celula cabeça, todos apontando para nulo
 void cria_lista(Tlista *lista)
 {
     lista->primeiro = Inicio;
@@ -59,7 +59,10 @@ int remove_final(Tlista *lista)
         printf("A lista esta vazia\n");
         return 0;
     }
-   
+    int i;
+    for(i = lista->primeiro; i < lista->ultimo; i++){
+        lista->Lista[i] = lista->Lista[i+1]; // Arrasta uma posição pra tras todos os itens
+    }
     lista->ultimo--;
     printf("Palavra removida com sucesso\n");
     return 1;

@@ -14,13 +14,15 @@ void ShellSort(Tlista lista, int tam, int *conta_movimentacao, int *conta_compar
         h = h/3;
         for( i = h ; i < tam ; i++ )
         {
-            aux = lista.Lista[i].palavra; j = i;
+            aux = lista.Lista[i].palavra; 
+            *(conta_movimentacao)+= 1;
+            j = i;
+                *(conta_comparacao)+= 1;
             while (strcmp(lista.Lista[j - h].palavra.string_aloc, aux.string_aloc) > 0)
             {
 
-                *(conta_comparacao)+= 1;
                 lista.Lista[j].palavra = lista.Lista[j - h].palavra; 
-
+                *(conta_movimentacao)+= 1;
                 j -= h;
                 if (j < h) break;
             }

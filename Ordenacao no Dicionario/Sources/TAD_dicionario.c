@@ -446,36 +446,43 @@ int Chama_ordena(Tlista *lista, int operacao, int tam, int *conta_movimentacao, 
     */
     switch (operacao){
         case 1:
+            t = clock() - t;
             printf("=-=-=-=-=-=-=-=-=-=\n");
             printf("Sequencia reordenada por Bubble:\n");
             printf("=-=-=-=-=-=-=-=-=-=\n");
             BubbleSort(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 2:
+            t = clock() - t;
             printf("=-=-=-=-=-=-=-=-=-=\n");
+            
             printf("Sequencia reordenada por Selecao:\n");
             printf("=-=-=-=-=-=-=-=-=-=\n");
             Selecao(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 3:
+            t = clock() - t;
             printf("=-=-=-=-=-=-=-=-=-=\n");
             printf("Sequencia reordenada por Insercao:\n");
             printf("=-=-=-=-=-=-=-=-=-=\n");
             Insercao(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 4:
+            t = clock() - t;
             printf("=-=-=-=-=-=-=-=-=-=\n");
             printf("Sequencia reordenada por Shellsort:\n");
             printf("=-=-=-=-=-=-=-=-=-=\n");
             ShellSort(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 5:
+            t = clock() - t;
             printf("=-=-=-=-=-=-=-=-=-=\n");
             printf("Sequencia reordenada por Quicksort:\n");
             printf("=-=-=-=-=-=-=-=-=-=\n");
             Quicksort(*(lista),tam, conta_movimentacao, conta_comparacao);
             break;
         case 6:
+            t = clock() - t;
             printf("=-=-=-=-=-=-=-=-=-=\n");
             printf("Sequencia reordenada por Heapsort:\n");
             printf("=-=-=-=-=-=-=-=-=-=\n");
@@ -488,7 +495,7 @@ int Chama_ordena(Tlista *lista, int operacao, int tam, int *conta_movimentacao, 
             printf("\nNumero de operacao invalido!!!");
             break;
     }
-    t = clock() - t;
+   
     *(conta_tempo) = t;
     return 0;
 }

@@ -1,4 +1,4 @@
-#include "Headers/TAD_dicionario.h"
+#include "../Headers/TAD_dicionario.h"
 #ifdef __linux__ 
     #include <unistd.h>
 #elif _WIN32
